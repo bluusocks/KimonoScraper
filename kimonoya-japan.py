@@ -6,11 +6,15 @@ URL = "https://www.kimonoya-japan.net/"
 rs = req.get(URL)
 pCont = bs(rs.content, "html.parser")
 
-results = pCont.find_all("div", class_="list_item_data")
+names = pCont.find_all("span", class_="goods_name")
 
-ly = [[]]
+nameArr = []
 
-for result in results:
-	print(result.prettify())
+for name in names:
+	nameArr.append([psg.Text(name.text)])
+
+print(nameArr)
+
+ly = [[psg.Text('total found: ' + str(len(nameArr)))],[nameArr]]
 
 psg.Window(title="results", layout=ly, margins=(200,200)).read()
