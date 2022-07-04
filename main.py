@@ -1,8 +1,8 @@
 import PySimpleGUI as psg
 
-from Sites.kimonoyaJapan import *
+import Sites.kimonoyaJapan as kimJ
 
-names = getGoodNames()
+names = kimJ.getGoodNames()
 
 ly = [[psg.Text('total found: ' + str(len(names)))],[names]]
 
